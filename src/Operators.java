@@ -13,6 +13,6 @@ public enum Operators {
 
     @Override
     public String toString() {
-        return title;
+        return "\\" + title;
     }
 }

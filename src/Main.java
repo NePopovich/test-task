@@ -6,9 +6,8 @@ public class Main {
         input = input.replaceAll(" ", "");
         if (checkString(input)){
             Operators operator = getOperator(input);
-            String op = "\\" + operator.toString();
-            Integer firstNumb = Integer.valueOf(input.split(op)[0]);
-            Integer secondNumb = Integer.valueOf(input.split(op)[1]);
+            Integer firstNumb = Integer.valueOf(input.split(operator.toString())[0]);
+            Integer secondNumb = Integer.valueOf(input.split(operator.toString())[1]);
             switch (operator){
                 case PLUS:
                     return String.valueOf(firstNumb + secondNumb);
@@ -27,9 +26,8 @@ public class Main {
 
     private static boolean checkString(String string) {
         for (Operators op : Operators.values()) {
-            if (string.contains(op.toString())) {
-                String operator = "\\" + op.toString();
-                String[] onlyNumbs = string.split(operator);
+            if (string.contains(op.getTitle())) {
+                String[] onlyNumbs = string.split(op.toString());
                 if (onlyNumbs.length == 2) {
                     if (Integer.valueOf(onlyNumbs[0]) >= 1 &&
                             Integer.valueOf(onlyNumbs[1]) >= 1 &&
@@ -45,7 +43,7 @@ public class Main {
 
     private static Operators getOperator(String string){
         for (Operators op : Operators.values()){
-            if (string.contains(op.toString())){
+            if (string.contains(op.getTitle())){
                 return op;
             }
         }
